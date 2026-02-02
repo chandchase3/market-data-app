@@ -1,26 +1,41 @@
-/* ===========================
-models/Alert.js
-=========================== */
 import mongoose from "mongoose";
 
-/*
-  USER-DEFINED TRIGGERS
-*/
 const alertSchema = new mongoose.Schema(
   {
-    user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-    asset: { type: mongoose.Schema.Types.ObjectId, ref: "Asset", required: true },
-    type: { type: String, enum: ["price", "news"], required: true },
-    condition: { type: Object, required: true }, // flexible JSON rule
-    isActive: { type: Boolean, default: true },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true
+    },
+
+    asset: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Asset",
+      required: true
+    },
+
+    category: {
+      type: String,
+      default: "price" // NOT enum yet
+    },
+
+    rule: {
+      type: Object,
+      required: true
+    },
+
+    status: {
+      type: String,
+      enum: ["active", "paused", "triggered"],
+      default: "active"
+    },
+
+    meta: {
+      source: String, // watchlist, news, idea, manual
+      expiresAt: Date
+    }
   },
   { timestamps: true }
 );
 
 export default mongoose.model("Alert", alertSchema);
-
-
-/* ===========================
-models/Notification.js
-=========================== */
-import mongoose from "mongoose";
