@@ -1,20 +1,32 @@
-import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './app/store';
+import { Navigate } from 'react-router-dom';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import WatchlistHub from './pages/WatchlistPage';
+import PrivateRoute from './components/PrivateRoute'; // we’ll create this next
 
 function App() {
-  const [status, setStatus] = useState('');
-
-  useEffect(() => {
-    fetch('/api/health')
-      .then(res => res.json())
-      .then(data => setStatus(data.status))
-      .catch(err => console.error(err));
-  }, []);
-
   return (
-    <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h1>Market Data App</h1>
-      <p>Server status: {status}</p>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route
+            path="/watchlists"
+            element={
+              <PrivateRoute>
+                <WatchlistHub />
+              </PrivateRoute>
+            }
+          />
+
+          <Route path="/" element={<Navigate to="/login" />} />
+        </Routes>
+      </Router>
+    </Provider>
   );
 }
 

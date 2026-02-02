@@ -1,12 +1,5 @@
-/* ===========================
-models/Watchlist.js
-=========================== */
 import mongoose from "mongoose";
 
-/*
-  WATCHLIST:
-  A named collection of assets owned by a user
-*/
 const watchlistSchema = new mongoose.Schema(
   {
     user: {

@@ -8,10 +8,8 @@ import bcrypt from "bcrypt";
 const userSchema = new mongoose.Schema(
   {
     name: {
-      type: String,
-      required: true, // user's display name
+      type: String
     },
-
     email: {
       type: String,
       required: true,
@@ -32,7 +30,6 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// ------------------ PRE-SAVE HOOK ------------------
 // Automatically hash the password before saving
 userSchema.pre("save", async function () {
   // Only hash password if it was modified
@@ -42,7 +39,6 @@ userSchema.pre("save", async function () {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-// ------------------ INSTANCE METHOD ------------------
 // Check if given password matches hashed password
 userSchema.methods.comparePassword = async function (enteredPassword) {
   return bcrypt.compare(enteredPassword, this.password);

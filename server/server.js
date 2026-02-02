@@ -13,6 +13,7 @@ import newsRoutes from "./routes/news.js";
 import notificationRoutes from "./routes/notifications.js";
 import userSettings from "./routes/userSettings.js";
 import userNewsRoutes from "./routes/userNews.js";
+
 dotenv.config();
 
 const app = express();
@@ -20,6 +21,7 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/assets", assetRoutes);
@@ -31,6 +33,7 @@ app.use("/news", newsRoutes);
 app.use("/notifications", notificationRoutes);
 app.use("/user-settings", userSettings);
 app.use("/user-news", userNewsRoutes);
+
 //Start server
 const PORT = process.env.PORT || 5000;
 

@@ -5,7 +5,7 @@ export const getUserSettings = async (req, res) => {
     const settings = await UserSettings.findOne({ user: req.user.id });
 
     if (!settings) {
-      // If user has no settings yet, create default
+      // Default settings
       const defaultSettings = await UserSettings.create({ user: req.user.id });
       return res.json(defaultSettings);
     }
@@ -24,7 +24,7 @@ export const updateUserSettings = async (req, res) => {
       return res.status(404).json({ message: "Settings not found" });
     }
 
-    // Merge existing settings with updates from request body
+    // Merge existing settings with updates from request 
     Object.keys(req.body).forEach((key) => {
       settings[key] = req.body[key];
     });

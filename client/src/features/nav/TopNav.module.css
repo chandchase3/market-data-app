@@ -1,0 +1,101 @@
+:root {
+  --navbar-bg: #000000;
+  --navbar-border: #2a2a2a;
+  --logo-color: #aab0ce;
+  --link-color: #e0e0e0;
+  --hover-bg: rgba(59, 130, 246, 0.15);
+  --hover-color: #3b82f6;
+  --navbar-height: 40px;
+  --nav-padding-x: 0.75rem;
+  --nav-font-size: 1.5rem;
+  --nav-border-radius: 2px;
+}
+
+/* Navbar container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* vertically center everything */
+  width: 100%;
+  background-color: var(--navbar-bg);
+  border-bottom: 1px solid var(--navbar-border);
+  padding: 0;
+  margin: 0;
+  height: var(--navbar-height); /* fixed height */
+  box-sizing: border-box; /* include padding in height if added */
+}
+
+/* Common styles for all links inside navbar */
+.navbar a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--nav-padding-x);
+  font-size: var(--nav-font-size);
+  text-decoration: none;
+  border-radius: var(--nav-border-radius);
+  height: var(--navbar-height); /* match navbar height exactly */
+  line-height: var(--navbar-height); /* ensure vertical centering */
+  transition: background-color 0.15s ease, color 0.15s ease;
+  box-sizing: border-box;
+}
+
+/* Logo link */
+.navbarLogo a {
+  font-weight: 300;
+  color: var(--logo-color);
+  height: var(--navbar-height);
+  line-height: var(--navbar-height);
+  display: flex;
+  align-items: center;
+}
+
+/* Nav links */
+.navbarLinks a {
+  font-weight: 200;
+  color: var(--link-color);
+  height: var(--navbar-height);
+  line-height: var(--navbar-height);
+}
+
+/* Hover effect for all links */
+.navbar a:hover {
+  background-color: var(--hover-bg);
+  color: var(--hover-color);
+}
+
+/* Flex container for right links */
+.navbarLinks {
+  display: flex;
+  gap: 0;
+  align-items: center; /* vertically center everything */
+}
+
+/* Logout button inside navbar */
+.logoutButton {
+  background: none;
+  border: none;
+  color: var(--link-color);
+  font-weight: 200;
+  cursor: pointer;
+  padding: 0 var(--nav-padding-x);
+  height: var(--navbar-height);
+  line-height: var(--navbar-height);
+  display: flex;
+  align-items: center;
+  border-radius: var(--nav-border-radius);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.logoutButton:hover {
+  background-color: var(--hover-bg);
+  color: var(--hover-color);
+}
+
+/* Responsive tweak: just shrink horizontal padding */
+@media (max-width: 600px) {
+  .navbar a,
+  .logoutButton {
+    padding: 0 0.5rem;
+  }
+}

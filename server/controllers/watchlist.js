@@ -1,11 +1,5 @@
-/* ===========================
-controllers/watchlist.js
-=========================== */
 import Watchlist from "../models/Watchlist.js";
 
-/*
-  GET all watchlists for the logged-in user
-*/
 export const getWatchlists = async (req, res) => {
   try {
     // req.user is set by the protect middleware
@@ -16,9 +10,6 @@ export const getWatchlists = async (req, res) => {
   }
 };
 
-/*
-  CREATE a new watchlist for the logged-in user
-*/
 export const createWatchlist = async (req, res) => {
   try {
     const { name, description, type } = req.body;
