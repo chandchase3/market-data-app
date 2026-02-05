@@ -5,6 +5,7 @@ import { Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import WatchlistHub from './pages/WatchlistPage';
+import KrakenPage from './pages/KrakenPage';
 import PrivateRoute from './components/PrivateRoute'; // we’ll create this next
 
 function App() {
@@ -14,11 +15,19 @@ function App() {
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route
+          {/* <Route
             path="/watchlists"
             element={
               <PrivateRoute>
                 <WatchlistHub />
+              </PrivateRoute>
+            }
+          /> */}
+          <Route
+            path="/kraken"
+            element={
+              <PrivateRoute>
+                <KrakenPage />
               </PrivateRoute>
             }
           />

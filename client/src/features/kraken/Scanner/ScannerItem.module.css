@@ -1,0 +1,64 @@
+.container {
+  width: 100%;
+  background-color: #0a0a0a;
+  color: #eee;
+  font-family: sans-serif;
+}
+
+.header {
+  display: flex;
+  padding: 8px 12px;
+  border-bottom: 1px solid #333;
+  font-weight: bold;
+}
+
+.col {
+  flex: 1;
+  text-align: left;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  padding: 8px 12px;
+}
+
+.even {
+  background-color: #121212;
+}
+
+.odd {
+  background-color: #1a1a1a;
+}
+
+.positive {
+  color: #4caf50;
+}
+
+.negative {
+  color: #f44336;
+}
+
+.remove {
+  flex: 0 0 auto;
+  margin-left: 10px;
+  background: #ff4d4f;
+  border: none;
+  color: white;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+
+.remove:hover {
+  background: #d9363e;
+}
+
+.noData {
+  color: #888;
+  padding: 8px 12px;
+}
