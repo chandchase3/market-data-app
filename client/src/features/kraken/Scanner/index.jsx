@@ -57,7 +57,6 @@ const Scanner = () => {
 
   return (
     <div>
-      <p>Status: {connected ? "Connected" : "Connecting..."}</p>
       <ScannerControls />
       <ScannerItem scanData={scanData} />
     </div>
