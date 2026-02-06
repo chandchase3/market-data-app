@@ -1,41 +1,47 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getKrakenScannerList, setScannerList } from '../../market/cryptoSlice';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getKrakenScannerList, setScannerList } from "../../market/cryptoSlice";
+import styles from "./ScannerAdd.module.css";
 
 const ScannerAdd = () => {
   const dispatch = useDispatch();
   const scannerList = useSelector(getKrakenScannerList);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
 
   const handleAdd = () => {
-    if (!input.trim()) return; // ignore empty
+    if (!input.trim()) return;
 
-    // VERIFY FORMAT: "BTC/USD"
     let formatted = input.trim().toUpperCase();
-    if (!formatted.includes('/')) {
-      formatted = `${formatted}/USD`; // auto append /USD
+    if (!formatted.includes("/")) {
+      formatted = `${formatted}/USD`;
     }
 
-    // AVOID DUPLICATES
     if (scannerList.includes(formatted)) {
-      setInput('');
+      setInput("");
       return;
     }
 
-    // ADD TO REDUX
     dispatch(setScannerList([...scannerList, formatted]));
-    setInput('');
+    setInput("");
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleAdd();
+    }
   };
 
   return (
-    <div style={{ margin: '10px 0' }}>
+    <div className={styles.container}>
       <input
         type="text"
         value={input}
-        placeholder="Enter pair (e.g., BTC/USD)"
-        onChange={(e) => setInput(e.target.value)}
+        placeholder="Add coins..."
+        onChange={(e) => setInput(e.target.value.toUpperCase())}
+        onKeyDown={handleKeyDown} // <-- triggers handleAdd on Enter
+        className={styles.input}
       />
-      <button onClick={handleAdd} style={{ marginLeft: '5px' }}>
+      <button onClick={handleAdd} className={styles.button}>
         Add
       </button>
     </div>

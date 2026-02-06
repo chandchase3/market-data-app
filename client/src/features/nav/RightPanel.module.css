@@ -1,37 +1,95 @@
+:root {
+  --panel-bg: #0a0a0a;
+  --panel-border: #1f1f1f;
+  --toggleBtn-bg: var(--panel-bg);
+  --toggleBtn-hover-bg: #000000;
+  --toggleBtn-color: #9ca3af;
+  --toggleBtn-hover-color: #ffffff;
+  --navLink-color: #d1d5db;
+  --navLink-hover-bg: #1f1f1f;
+  --navLink-active-bg: #111827;
+  --navLink-active-color: #60a5fa;
+}
+
+/* Container */
 .rightPanel {
-  width: 250px;
-  background-color: #f9f9f9;
-  padding: 1rem;
-  border-left: 1px solid #ddd;
+  width: 200px;
+  background-color: var(--panel-bg);
+  /* border-left: 1px solid var(--panel-border); */
   display: flex;
   flex-direction: column;
-  transition: width 0.3s ease;
+  transition: width 0.25s ease;
+  box-sizing: border-box;
 }
 
 .collapsed {
-  width: 50px; /* shrink to small strip */
+  width: 48px; /* small strip when collapsed */
 }
 
+/* Toggle button */
 .toggleBtn {
-  background-color: #0066cc;
-  color: white;
+  height: 40px;
+  width: 40px;
+  margin: 0; /* remove extra spacing */
+  padding: 0; /* remove any padding */
+  background-color: var(--toggleBtn-bg);
+  color: var(--toggleBtn-color);
   border: none;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  border-radius: 0;
   cursor: pointer;
-  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.content h4 {
-  margin: 0 0 0.5rem 0;
+/* Hover effects commented out */
+/*
+.toggleBtn:hover {
+  background-color: var(--toggleBtn-hover-bg);
+  color: var(--toggleBtn-hover-color);
+  box-shadow: 0 0 8px 2px rgba(59, 130, 246, 0.7);
+}
+*/
+
+/* Chevron rotation */
+.reversedIcon {
+  transition: transform 0.1s ease;
 }
 
-.content ul {
+.reversedIcon.open {
+  transform: rotate(180deg);
+}
+
+/* Navigation links */
+.navLinks {
+  padding: 8px 12px;
+}
+
+.navLinks ul {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
-.content li {
-  padding: 0.25rem 0;
+.navLinks li {
+  padding: 6px 8px;
+  color: var(--navLink-color);
+  font-size: 14px;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+/* Hover effects commented out */
+/*
+.navLinks li:hover {
+  background-color: var(--navLink-hover-bg);
+}
+*/
+
+.sectionTitle {
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: var(--navLink-color);
 }

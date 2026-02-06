@@ -1,20 +1,15 @@
-.container {
-  width: 100%;
-  background-color: #0a0a0a;
-  color: #eee;
-  font-family: sans-serif;
-}
-
 .header {
   display: flex;
+  align-items: center;
   padding: 8px 12px;
-  border-bottom: 1px solid #333;
+  /* border-bottom: 1px solid #333; */
   font-weight: bold;
 }
 
 .col {
   flex: 1;
   text-align: left;
+  line-height: 1.2;
 }
 
 .list {
@@ -25,11 +20,12 @@
 
 .item {
   display: flex;
+  align-items: center;
   padding: 8px 12px;
 }
 
 .even {
-  background-color: #121212;
+  background-color: black;
 }
 
 .odd {
@@ -42,20 +38,6 @@
 
 .negative {
   color: #f44336;
-}
-
-.remove {
-  flex: 0 0 auto;
-  margin-left: 10px;
-  background: #ff4d4f;
-  border: none;
-  color: white;
-  padding: 2px 6px;
-  cursor: pointer;
-}
-
-.remove:hover {
-  background: #d9363e;
 }
 
 .noData {

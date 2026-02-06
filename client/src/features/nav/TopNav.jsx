@@ -19,7 +19,7 @@ export default function TopNav() {
     <nav className={styles.navbar}>
       {/* Left: Logo/Home */}
       <div className={styles.navbarLogo}>
-        <Link to="/">MarketApp</Link>
+        <Link to="/">Crypto</Link>
       </div>
 
       {/* Right: Main navigation */}

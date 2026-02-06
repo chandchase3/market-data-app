@@ -1,101 +1,90 @@
 :root {
-  --navbar-bg: #000000;
-  --navbar-border: #2a2a2a;
-  --logo-color: #aab0ce;
-  --link-color: #e0e0e0;
-  --hover-bg: rgba(59, 130, 246, 0.15);
-  --hover-color: #3b82f6;
-  --navbar-height: 40px;
-  --nav-padding-x: 0.75rem;
-  --nav-font-size: 1.5rem;
-  --nav-border-radius: 2px;
+  --navbar-bg: #0a0a0a;
+  --logo-color: white;
+  --link-color: white;
+  --hover-bg: #000;
+  --hover-color: #ffffff;
+  --navbar-height: 48px; /* same as side nav width */
+  --nav-padding-x: 1.6rem; /* more left/right padding */
+  --nav-font-size: 1.1rem; /* slightly bigger font */
+  --nav-border-radius: 0; /* match side nav */
 }
 
 /* Navbar container */
 .navbar {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* vertically center everything */
+  align-items: center;
   width: 100%;
   background-color: var(--navbar-bg);
-  border-bottom: 1px solid var(--navbar-border);
+  border-bottom: none; /* remove bottom border */
   padding: 0;
   margin: 0;
-  height: var(--navbar-height); /* fixed height */
-  box-sizing: border-box; /* include padding in height if added */
+  height: var(--navbar-height);
+  box-sizing: border-box;
+  transition: background-color 0.25s ease;
 }
 
-/* Common styles for all links inside navbar */
-.navbar a {
+/* Logo link styled like nav items */
+.navbarLogo a {
+  /* font-weight: 200; */
+  color: var(--logo-color);
+  height: var(--navbar-height);
+  line-height: var(--navbar-height);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: var(--nav-font-size);
+  padding: 0 var(--nav-padding-x);
+  border-radius: var(--nav-border-radius);
+  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Nav links container */
+.navbarLinks {
+  display: flex;
+  align-items: center;
+}
+
+/* Links inside navbar */
+.navbarLinks a,
+.logoutButton {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 var(--nav-padding-x);
   font-size: var(--nav-font-size);
   text-decoration: none;
-  border-radius: var(--nav-border-radius);
-  height: var(--navbar-height); /* match navbar height exactly */
-  line-height: var(--navbar-height); /* ensure vertical centering */
-  transition: background-color 0.15s ease, color 0.15s ease;
-  box-sizing: border-box;
-}
-
-/* Logo link */
-.navbarLogo a {
-  font-weight: 300;
-  color: var(--logo-color);
-  height: var(--navbar-height);
-  line-height: var(--navbar-height);
-  display: flex;
-  align-items: center;
-}
-
-/* Nav links */
-.navbarLinks a {
-  font-weight: 200;
   color: var(--link-color);
   height: var(--navbar-height);
   line-height: var(--navbar-height);
+  border-radius: var(--nav-border-radius);
+  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  margin: 0; /* nav items touch each other */
 }
 
-/* Hover effect for all links */
-.navbar a:hover {
-  background-color: var(--hover-bg);
-  color: var(--hover-color);
+/* Hover effects with subtle glow */
+.navbarLinks a:hover,
+.logoutButton:hover,
+.navbarLogo a:hover {
+  color: white;
+  /* background-color: var(--hover-bg);
+  /* box-shadow: 0 0 8px 2px rgba(59, 130, 246, 0.5); */
 }
 
-/* Flex container for right links */
-.navbarLinks {
-  display: flex;
-  gap: 0;
-  align-items: center; /* vertically center everything */
-}
-
-/* Logout button inside navbar */
+/* Logout button specific style */
 .logoutButton {
   background: none;
   border: none;
-  color: var(--link-color);
   font-weight: 200;
-  cursor: pointer;
-  padding: 0 var(--nav-padding-x);
-  height: var(--navbar-height);
-  line-height: var(--navbar-height);
-  display: flex;
-  align-items: center;
-  border-radius: var(--nav-border-radius);
-  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-.logoutButton:hover {
-  background-color: var(--hover-bg);
-  color: var(--hover-color);
-}
-
-/* Responsive tweak: just shrink horizontal padding */
+/* Responsive tweak */
 @media (max-width: 600px) {
-  .navbar a,
-  .logoutButton {
+  .navbarLinks a,
+  .logoutButton,
+  .navbarLogo a {
     padding: 0 0.5rem;
   }
 }

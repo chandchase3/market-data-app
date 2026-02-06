@@ -1,27 +1,86 @@
+:root {
+  --sideNav-bg: #0a0a0a;
+  --sideNav-border: #1f1f1f;
+  --toggleBtn-bg: var(--sideNav-bg);
+  --toggleBtn-hover-bg: #000000;
+  --toggleBtn-color: #9ca3af;
+  --toggleBtn-hover-color: #ffffff;
+  --navLink-color: #d1d5db;
+  --navLink-hover-bg: #1f1f1f;
+  --navLink-active-bg: #111827;
+  --navLink-active-color: #60a5fa;
+}
+
+/* Sidebar container */
 .sideNav {
   width: 200px;
-  background-color: #f4f4f4;
-  padding: 1rem;
-  transition: width 0.3s ease;
+  background-color: var(--sideNav-bg);
+  transition: width 0.25s ease;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 .collapsed {
-  width: 50px;
+  width: 48px; /* panel shrinks, button stays same */
 }
 
+/* Toggle button: always 40x40, top-left, no margin change */
 .toggleBtn {
-  margin-bottom: 1rem;
+  height: 40px;
+  margin: 0; /* fixed margin */
+  background-color: var(--toggleBtn-bg);
+  color: var(--toggleBtn-color);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-nav a {
+.toggleBtn:hover {
+  background-color: var(--toggleBtn-hover-bg);
+  color: var(--toggleBtn-hover-color);
+}
+
+/* Remove the width/margin change from collapsed state */
+.toggleCollapsed {
+  border-radius: 0;
+}
+
+/* Nav links */
+.navLinks {
+  padding: 8px 12px;
+}
+
+.navLinks a {
   display: block;
-  padding: 0.25rem 0;
+  padding: 6px 8px;
   text-decoration: none;
-  color: #333;
+  color: var(--navLink-color);
+  font-size: 14px;
 }
 
-.hidden {
-  display: none;
+.navLinks a:hover {
+  background-color: var(--navLink-hover-bg);
+}
+
+.navLinks a.active {
+  background-color: var(--navLink-active-bg);
+  color: var(--navLink-active-color);
+}
+
+.toggleBtn svg {
+  stroke-width: 1.5;
+  border-radius: 0;
+}
+
+/* Flip the chevron icon only when open */
+.reversedIcon {
+  transition: transform 0.1s ease; /* faster than before */
+}
+
+.reversedIcon.open {
+  transform: rotate(180deg); /* points left when open */
 }

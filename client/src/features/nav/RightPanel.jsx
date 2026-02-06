@@ -1,30 +1,34 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleRightPanelCollapse } from '../ui/uiSlice';
+import { ChevronLeft } from 'lucide-react'; // same style as SideNav
 import styles from './RightPanel.module.css';
 
 export default function RightPanel() {
-  // Start collapsed by default
-  const [collapsed, setCollapsed] = useState(true);
+  const dispatch = useDispatch();
+  const { collapsed, items } = useSelector((state) => state.ui.rightPanel);
 
   return (
     <aside className={`${styles.rightPanel} ${collapsed ? styles.collapsed : ''}`}>
-      {/* Toggle Button */}
       <button
-        className={styles.toggleBtn}
-        onClick={() => setCollapsed(!collapsed)}
+        className={`${styles.toggleBtn} ${collapsed ? styles.toggleCollapsed : ''}`}
+        onClick={() => dispatch(toggleRightPanelCollapse())}
+        aria-label="Toggle right panel"
       >
-        {collapsed ? '⬅' : '➡'} {/* arrow indicates collapse/expand */}
+        <ChevronLeft
+          size={24}
+          className={`${styles.reversedIcon} ${collapsed ? '' : styles.open}`}
+        />
       </button>
 
-      {/* Panel Content */}
       {!collapsed && (
-        <div className={styles.content}>
-          <h4>Quick Actions</h4>
+        <nav className={styles.navLinks}>
+          {items.quickActions && <div className={styles.sectionTitle}>Quick Actions</div>}
           <ul>
-            <li>Recent Alerts</li>
-            <li>Market Summary</li>
-            <li>Filters / Tags</li>
+            {items.recentAlerts && <li>Recent Alerts</li>}
+            {items.marketSummary && <li>Market Summary</li>}
+            {items.filters && <li>Filters / Tags</li>}
           </ul>
-        </div>
+        </nav>
       )}
     </aside>
   );

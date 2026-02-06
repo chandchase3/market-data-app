@@ -12,7 +12,7 @@ const historyQty = 50;
 // INITIAL STATE
 const initialState = {
   krakenCoins: usdCoins,
-  krakenScannerList: ["ETH/USD"],
+  krakenScannerList: ["ETH/USD", "BTC/USD", "SOL/USD", "LINK/USD", "LTC/USD", "XLM/USD",], // default pairs for scanner
   history: {},
   krakenGainers: [],
   reqSpeed: 2000,

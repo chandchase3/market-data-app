@@ -1,0 +1,65 @@
+:root {
+  --scanner-bg: #0a0a0a;
+  --input-bg: #black;
+  --input-border: #333;
+  --input-border-focus: #555;
+  --input-color: #eee;
+  --input-placeholder: #777;
+  --button-bg: #1f1f1f;
+  --button-bg-hover: #2a2a2a;
+  --button-bg-active: #333;
+  --button-border: #333;
+  --button-border-hover: #555;
+  --button-color: #eee;
+  --font-size: 14px;
+  --padding-y: 6px;
+  --padding-x: 10px;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  background-color: var(--scanner-bg);
+  border-radius: 3px;
+}
+
+.input {
+  flex: 1;
+  background-color: var(--input-bg);
+  border: none;
+  color: var(--input-color);
+  padding: var(--padding-y) var(--padding-x);
+  font-size: var(--font-size);
+  outline: none;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+  border-radius: 0;
+}
+
+.input::placeholder {
+  color: var(--input-placeholder);
+}
+
+.input:focus {
+  border-color: var(--input-border-focus);
+}
+
+.button {
+  background-color: var(--button-bg);
+  /* border: 1px solid var(--button-border); */
+  border-radius: 0;
+  border-left: none;
+  color: var(--button-color);
+  padding: var(--padding-y) 14px;
+  font-size: var(--font-size);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.button:hover {
+  background-color: var(--button-bg-hover);
+  border-color: var(--button-border-hover);
+}
+
+.button:active {
+  background-color: var(--button-bg-active);
+}

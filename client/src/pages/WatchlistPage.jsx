@@ -4,7 +4,7 @@ import WatchlistHub from '../features/watchlists';
 export default function WatchlistPage() {
   return (
     <MainLayout>
-      <WatchlistHub />
+      <WatchlistHub />]
     </MainLayout>
   );
 }

@@ -1,0 +1,21 @@
+.container {
+  padding: 16px;
+}
+
+.title {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.item {
+  padding: 6px 0;
+}
+
+.empty {
+  opacity: 0.6;
+}

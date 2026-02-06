@@ -2,18 +2,19 @@ import React from "react";
 import Decimal from "decimal.js";
 import styles from "./ScannerItem.module.css";
 
-const ScannerItem = ({ scanData, onRemove }) => {
-  if (!scanData || Object.keys(scanData).length === 0) return <p className={styles.noData}>No data yet</p>;
+const ScannerItem = ({ scanData }) => {
+  if (!scanData || Object.keys(scanData).length === 0) {
+    return <p className={styles.noData}>No data yet</p>;
+  }
 
   return (
-    <div className={styles.container}>
+    <div>
       {/* Column headers */}
       <div className={styles.header}>
         <div className={styles.col}>Coin</div>
         <div className={styles.col}>Price</div>
         <div className={styles.col}>Volume 24h</div>
         <div className={styles.col}>Change %</div>
-        <div className={styles.col}></div> {/* For remove button */}
       </div>
 
       <ul className={styles.list}>
@@ -24,7 +25,9 @@ const ScannerItem = ({ scanData, onRemove }) => {
           const price = new Decimal(coinData.c[0]).toFixed(2);
           const vol24 = new Decimal(coinData.v[1]).toFixed(2);
           const change24 = coinData.o[1]
-            ? new Decimal((coinData.c[0] - coinData.o[1]) / coinData.o[1] * 100).toFixed(2)
+            ? new Decimal(
+                ((coinData.c[0] - coinData.o[1]) / coinData.o[1]) * 100
+              ).toFixed(2)
             : "0.00";
 
           const isPositive = parseFloat(change24) >= 0;
@@ -32,15 +35,20 @@ const ScannerItem = ({ scanData, onRemove }) => {
           return (
             <li
               key={pair}
-              className={`${styles.item} ${index % 2 === 0 ? styles.even : styles.odd}`}
+              className={`${styles.item} ${
+                index % 2 === 0 ? styles.even : styles.odd
+              }`}
             >
               <div className={styles.col}>{pair}</div>
               <div className={styles.col}>${price}</div>
-              <div className={styles.col}>{vol24}</div>
-              <div className={`${styles.col} ${isPositive ? styles.positive : styles.negative}`}>
+              <div className={styles.col}>${vol24}</div>
+              <div
+                className={`${styles.col} ${
+                  isPositive ? styles.positive : styles.negative
+                }`}
+              >
                 {change24}%
               </div>
-              <button className={styles.remove} onClick={() => onRemove(pair)}>X</button>
             </li>
           );
         })}

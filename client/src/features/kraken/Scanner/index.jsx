@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { getKrakenScannerList } from "../../market/cryptoSlice";
 import ScannerControls from "./ScannerControls";
 import ScannerItem from "./ScannerItem";
+import styles from "./index.module.css";
 
 const Scanner = () => {
   const scannerList = useSelector(getKrakenScannerList); // array of pair strings
@@ -57,8 +58,12 @@ const Scanner = () => {
 
   return (
     <div>
-      <ScannerControls />
-      <ScannerItem scanData={scanData} />
+      <div className={styles.controlsContainer}>
+        <ScannerControls />
+      </div>
+      <div className={styles.scannerContainer}>
+        <ScannerItem scanData={scanData} />
+      </div>
     </div>
   );
 };
